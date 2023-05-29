@@ -1,0 +1,18 @@
+.grid {
+    top: 50%;
+    left: 50%;
+    border: 3px solid black;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 80vh;
+    width: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid div {
+    box-sizing: border-box;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    flex-basis: calc(100% / 16);
+}
