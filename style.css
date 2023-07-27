@@ -1,3 +1,7 @@
+* {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .etch-a-sketch {
     height: 100vh;
     display: flex;
@@ -7,11 +11,7 @@
 }
 
 .grid {
-    /* top: 50%; */
-    /* left: 50%; */
     border: 3px solid black;
-    /* position: absolute; */
-    /* transform: translate(-50%, -50%); */
     height: 80vh;
     width: 80vh;
     display: flex;
@@ -25,3 +25,28 @@
     flex-basis: calc(100% / 16);
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.size {
+    display: flex;
+    
+}
+
+button {
+    font-size: large;
+    padding: 1em;
+    margin-top: .5em;
+    float: left;
+    border: none;
+}
+
+.grid-size {
+    font-size: large;
+    padding: 1em;
+    margin-top: .5em;
+    float: left;
+    border: 0.01em solid black;
+}
