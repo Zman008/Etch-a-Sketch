@@ -12,11 +12,14 @@ let color = 'black';
 
 createDivs(size * size);
 
+grid.addEventListener("mousedown", () => isMouseDown = (isMouseDown) ? false : true);
+
 sizePlus.addEventListener("click", () => {
     if (size < 100){
         size += 1;
         gridSize.textContent = size;
-        createDivs(2 * size - 1);
+        grid.innerHTML = '';
+        createDivs(size * size);
     }
 });
    
@@ -24,16 +27,9 @@ sizeMinus.addEventListener("click", () => {
     if (size > 8){
         size -= 1;
         gridSize.textContent = size;
-        removeDiv(2 * size + 1);
+        grid.innerHTML = '';
+        createDivs(size * size);
     }
-});
-
-document.addEventListener("mousedown", () => {
-    isMouseDown = true;
-});
-
-document.addEventListener("mouseup", () => {
-    isMouseDown = false;
 });
 
 eraser.addEventListener("click", () => {
@@ -54,29 +50,16 @@ function createDivs(n) {
 
     squares = grid.querySelectorAll('.grid div');
     
-    squares.forEach(div => {
-        div.style.flexBasis = `${100 / size}%`;
-        
-        div.addEventListener('dragstart', (event) => {
-            event.preventDefault();
+    squares.forEach(square => {
+        square.style.flexBasis = `${100 / size}%`;
+
+        square.addEventListener("click", () => {
+            square.style.backgroundColor = color;
         });
 
-        div.addEventListener("mousedown", () => div.style.backgroundColor = color);
-        div.addEventListener("mouseenter", () => {
+        square.addEventListener("mouseenter", () => {
             if(isMouseDown)
-                div.style.backgroundColor = color;
+                square.style.backgroundColor = color;
         });
     }); 
-}
-
-function removeDiv(n) {
-    for (let i = 0; i < n; i++) {
-        grid.removeChild(grid.lastChild);
-    }
-
-    squares = grid.querySelectorAll('.grid div');
-    
-    squares.forEach(div => {
-        div.style.flexBasis = `${100 / size}%`;
-    });
 }
