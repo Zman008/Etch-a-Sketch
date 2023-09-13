@@ -3,10 +3,12 @@ const clearButton = document.querySelector('.clear');
 const sizePlus = document.querySelector('.size-plus');
 const sizeMinus = document.querySelector('.size-minus');
 const gridSize = document.querySelector('.grid-size');
+const eraser = document.querySelector('.eraser');
 let squares;
 let div;
 let isMouseDown = false;
 let size = 16;
+let color = 'black';
 
 createDivs(size * size);
 
@@ -34,6 +36,10 @@ document.addEventListener("mouseup", () => {
     isMouseDown = false;
 });
 
+eraser.addEventListener("click", () => {
+    color = "white";
+});
+
 clearButton.addEventListener("click", () => {
     squares.forEach((square) => {
         square.style.backgroundColor = "";  
@@ -50,18 +56,17 @@ function createDivs(n) {
     
     squares.forEach(div => {
         div.style.flexBasis = `${100 / size}%`;
+        
         div.addEventListener('dragstart', (event) => {
             event.preventDefault();
         });
-    });
 
-    squares.forEach((square) => {
-        square.addEventListener("mousedown", () => square.style.backgroundColor = 'black');
-        square.addEventListener("mouseenter", () => {
+        div.addEventListener("mousedown", () => div.style.backgroundColor = color);
+        div.addEventListener("mouseenter", () => {
             if(isMouseDown)
-                square.style.backgroundColor = 'black';
+                div.style.backgroundColor = color;
         });
-    });    
+    }); 
 }
 
 function removeDiv(n) {
@@ -73,8 +78,5 @@ function removeDiv(n) {
     
     squares.forEach(div => {
         div.style.flexBasis = `${100 / size}%`;
-        div.addEventListener('dragstart', (event) => {
-            event.preventDefault();
-        });
     });
 }
