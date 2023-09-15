@@ -12,13 +12,14 @@
 <body>
     <div class="etch-a-sketch">
         <div class="buttons">
+            <button class="eraser">ERASER</button>
+            <button class="clear">CLEAR</button>
             <div class="size">
                 <button class="size-minus">-</button>
                 <span class="grid-size">16</span>
                 <button class="size-plus">+</button>
             </div>
-            <button class="eraser">ERASER</button>
-            <button class="clear">CLEAR</button>
+            <input type="range" id="size-slider" min="8" max="100" value="16">
         </div>
 
         <div class="grid"></div>

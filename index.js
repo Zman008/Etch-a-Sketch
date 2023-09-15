@@ -18,7 +18,6 @@ sizePlus.addEventListener("click", () => {
     if (size < 100){
         size += 1;
         gridSize.textContent = size;
-        grid.innerHTML = '';
         createDivs(size * size);
     }
 });
@@ -43,14 +42,16 @@ clearButton.addEventListener("click", () => {
 });
 
 function createDivs(n) {
+    grid.innerHTML = '';    // remove all previous divs
+
     for (let i = 0; i < n; i++) {
         div = document.createElement('div');
         grid.appendChild(div);
     }
 
-    squares = grid.querySelectorAll('.grid div');
+    squares = grid.querySelectorAll('.grid div');  
     
-    squares.forEach(square => {
+    squares.forEach(square => {     // add event listeners to each square to create draw functionality
         square.style.flexBasis = `${100 / size}%`;
 
         square.addEventListener("click", () => {

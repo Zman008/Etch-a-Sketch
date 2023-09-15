@@ -22,30 +22,37 @@
     box-sizing: border-box;
     border-top: 1px solid rgb(200, 200, 200);
     border-left: 1px solid rgb(200, 200, 200);
-    flex-basis: calc(100% / 16);
 }
 
 .buttons {
+    width: 13em;
     display: flex;
     flex-direction: column;
+    gap: 1em;
 }
 
 .size {
     display: flex;
 }
 
+.size > * {
+    flex: 1;
+}
+
 button {
     font-size: large;
     padding: 1em;
-    margin-top: .5em;
     float: left;
     border: none;
+    border-radius: 5px;
 }
 
 .grid-size {
     font-size: large;
     padding: 1em;
-    margin-top: .5em;
-    float: left;
-    border: 0.01em solid black;
+    background-color: rgb(240,240,240);
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
+    border-left: 2px solid rgba(0, 0, 0, 0.5);
+    flex: 1;
+    text-align: center;
 }
