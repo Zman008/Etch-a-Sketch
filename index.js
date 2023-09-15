@@ -1,4 +1,6 @@
 const grid = document.querySelector('.grid');
+const pen = document.querySelector('.pen');
+const colorPicker = document.querySelector('.color-picker');
 const clearButton = document.querySelector('.clear');
 const sizePlus = document.querySelector('.size-plus');
 const sizeMinus = document.querySelector('.size-minus');
@@ -10,7 +12,8 @@ let div;
 let isMouseDown = false;
 let size = 16;
 slider.value = size;
-let color = 'black';
+let color = "#262626";
+colorPicker.value = color;
 
 createDivs(size * size);
 
@@ -38,6 +41,14 @@ slider.addEventListener("change", () => {
     gridSize.textContent = size;
     grid.innerHTML = '';
     createDivs(size * size);
+});
+
+pen.addEventListener("click", () => {
+    color = colorPicker.value;
+});
+
+colorPicker.addEventListener("change", () => {
+    color = colorPicker.value;
 });
 
 eraser.addEventListener("click", () => {

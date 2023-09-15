@@ -24,11 +24,21 @@
     border-left: 1px solid rgb(200, 200, 200);
 }
 
+
 .buttons {
     width: 13em;
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+
+.pen {
+    width: 60%;
+}
+
+.color-picker{
+    width: 40%;
+    height: 100%;
 }
 
 .size {
