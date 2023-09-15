@@ -4,10 +4,12 @@ const sizePlus = document.querySelector('.size-plus');
 const sizeMinus = document.querySelector('.size-minus');
 const gridSize = document.querySelector('.grid-size');
 const eraser = document.querySelector('.eraser');
+const slider = document.getElementById('size-slider');
 let squares;
 let div;
 let isMouseDown = false;
 let size = 16;
+slider.value = size;
 let color = 'black';
 
 createDivs(size * size);
@@ -29,6 +31,13 @@ sizeMinus.addEventListener("click", () => {
         grid.innerHTML = '';
         createDivs(size * size);
     }
+});
+
+slider.addEventListener("change", () => {
+    size = slider.value;
+    gridSize.textContent = size;
+    grid.innerHTML = '';
+    createDivs(size * size);
 });
 
 eraser.addEventListener("click", () => {
