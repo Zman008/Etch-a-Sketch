@@ -12,7 +12,7 @@ let div;
 let isMouseDown = false;
 let size = 16;
 slider.value = size;
-let color = "#262626";
+let color = "#1e1e1e";
 colorPicker.value = color;
 
 createDivs(size * size);
