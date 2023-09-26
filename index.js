@@ -58,7 +58,7 @@ colorPicker.addEventListener("change", () => {
 
 eraser.addEventListener("click", () => {
     mode = 1;
-    color = "white";
+    color = "rgb(255, 255, 255)";
 });
 
 random.addEventListener("click", () => {

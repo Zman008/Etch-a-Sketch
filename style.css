@@ -14,6 +14,7 @@
     border: 3px solid black;
     height: 80vh;
     width: 80vh;
+    flex-shrink: 0;
     display: flex;
     flex-wrap: wrap;
 }
@@ -56,6 +57,15 @@ button {
     float: left;
     border: none;
     border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+button:active {
+    background-color: rgb(150, 150, 150);
+    transform: scale(0.95);
 }
 
 .grid-size {
