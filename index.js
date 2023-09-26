@@ -16,7 +16,6 @@ let size = 16;
 slider.value = size;
 let color = "#1e1e1e";
 colorPicker.value = color;
-let randomOn = false;
 let mode = 1;
 
 createDivs(size * size);
@@ -27,6 +26,7 @@ sizePlus.addEventListener("click", () => {
     if (size < 100){
         size += 1;
         gridSize.textContent = size;
+        slider.value = size;
         createDivs(size * size);
     }
 });
@@ -35,7 +35,7 @@ sizeMinus.addEventListener("click", () => {
     if (size > 8){
         size -= 1;
         gridSize.textContent = size;
-        grid.innerHTML = '';
+        slider.value = size;
         createDivs(size * size);
     }
 });
@@ -43,7 +43,6 @@ sizeMinus.addEventListener("click", () => {
 slider.addEventListener("change", () => {
     size = slider.value;
     gridSize.textContent = size;
-    grid.innerHTML = '';
     createDivs(size * size);
 });
 
