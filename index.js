@@ -17,6 +17,7 @@ slider.value = size;
 let color = "#1e1e1e";
 colorPicker.value = color;
 let randomOn = false;
+let mode = 1;
 
 createDivs(size * size);
 
@@ -47,22 +48,26 @@ slider.addEventListener("change", () => {
 });
 
 pen.addEventListener("click", () => {
-    randomOn = false;
+    mode = 1;
     color = colorPicker.value;
 });
 
 colorPicker.addEventListener("change", () => {
-    randomOn = false;
+    mode = 1;
     color = colorPicker.value;
 });
 
 eraser.addEventListener("click", () => {
-    randomOn = false;
+    mode = 1;
     color = "white";
 });
 
 random.addEventListener("click", () => {
-    randomOn = (randomOn) ? false : true;
+    mode = (mode == 2) ? 1 : 2;
+});
+
+shading.addEventListener("click", () => {
+    mode = (mode == 3) ? 1 : 3;
 });
 
 clearButton.addEventListener("click", () => {
@@ -85,18 +90,47 @@ function createDivs(n) {
         square.style.flexBasis = `${100 / size}%`;
 
         square.addEventListener("click", () => {
-            if(randomOn)
+            if(mode == 1){} // color stays the same
+            else if(mode == 2)  // random color
                 color = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+            else if (mode == 3) {  // shading
+                let red = getColor(square)[0];
+                let green = getColor(square)[1];
+                let blue = getColor(square)[2];
+                color = `rgb(${red-25}, ${green-25}, ${blue-25})`;
+            }
 
             square.style.backgroundColor = color;
         });
 
         square.addEventListener("mouseenter", () => {
-            if(randomOn)
+            if(mode == 1){}  
+            else if(mode == 2)
                 color = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+            else if (mode == 3) {
+                let red = getColor(square)[0];
+                let green = getColor(square)[1];
+                let blue = getColor(square)[2];
+                color = `rgb(${red-25}, ${green-25}, ${blue-25})`;
+            }
 
             if(isMouseDown)
                 square.style.backgroundColor = color;
         });
     }); 
 }
+
+function getColor(element) {
+    if(element.style.backgroundColor == "")
+        return [255, 255, 255];
+
+    let colorCodes = element.style.backgroundColor.match(/\d+/g);
+    
+    let red = parseInt(colorCodes[0]);
+    let green = parseInt(colorCodes[1]);
+    let blue = parseInt(colorCodes[2]);
+
+    return [red, green, blue];
+}
+
+console.log(getColor(pen));
