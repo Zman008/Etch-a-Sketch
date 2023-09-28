@@ -71,7 +71,7 @@ shading.addEventListener("click", () => {
 
 clearButton.addEventListener("click", () => {
     squares.forEach((square) => {
-        square.style.backgroundColor = "";  
+        square.style.backgroundColor = "#ffffff";  
     });
 });
 
@@ -88,6 +88,12 @@ function createDivs(n) {
     squares.forEach(square => {     // add event listeners to each square to create draw functionality
         square.style.flexBasis = `${100 / size}%`;
 
+        square.addEventListener('contextmenu', (event) => {
+            console.log("right click");
+            event.preventDefault();
+            color = (color != '#ffffff') ? '#ffffff' : '#1e1e1e';
+        });
+        
         square.addEventListener("click", () => {
             if(mode == 1){} // color stays the same
             else if(mode == 2)  // random color
@@ -131,5 +137,3 @@ function getColor(element) {
 
     return [red, green, blue];
 }
-
-console.log(getColor(pen));
